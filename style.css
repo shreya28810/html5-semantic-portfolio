@@ -1,97 +1,566 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+/* ==============================
+   1. CSS VARIABLES / THEME
+   ============================== */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+
+    --background-color: #f4f6f9;
+    --surface-color: #ffffff;
+
+    --text-color: #1f2937;
+    --muted-text: #6b7280;
+
+    --border-color: #e5e7eb;
+
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    --radius: 16px;
+
+    --transition: 0.3s ease;
 }
 
-body{
-font-family:Arial,sans-serif;
-background:#f4f6f9;
-color:#333;
-line-height:1.6;
+
+/* ==============================
+   2. DARK MODE VARIABLES
+   ============================== */
+
+body.dark-mode {
+    --background-color: #111827;
+    --surface-color: #1f2937;
+
+    --text-color: #f9fafb;
+    --muted-text: #d1d5db;
+
+    --border-color: #374151;
+
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-header{
-background:#2563eb;
-color:white;
-padding:20px;
-text-align:center;
+
+/* ==============================
+   3. GLOBAL RESET
+   ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-nav ul{
-display:flex;
-justify-content:center;
-list-style:none;
-gap:20px;
-margin-top:15px;
+
+html {
+    scroll-behavior: smooth;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-font-weight:bold;
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    line-height: 1.6;
+
+    min-height: 100vh;
+
+    transition:
+        background-color var(--transition),
+        color var(--transition);
 }
 
-nav a:hover{
-text-decoration:underline;
+
+/* ==============================
+   4. HEADER
+   ============================== */
+
+header {
+    background: var(--primary-color);
+    color: white;
+
+    padding: 20px;
+
+    text-align: center;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-main{
-max-width:900px;
-margin:30px auto;
-padding:20px;
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-section{
-background:white;
-padding:25px;
-margin-bottom:20px;
-border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
+
+/* ==============================
+   5. NAVIGATION - FLEXBOX
+   ============================== */
+
+nav ul {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    list-style: none;
+
+    gap: 10px 25px;
+
+    margin-top: 10px;
 }
 
-img{
-display:block;
-margin:20px auto;
-border-radius:50%;
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    transition:
+        background-color var(--transition),
+        transform var(--transition);
 }
 
-form{
-display:flex;
-flex-direction:column;
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+
+    transform: translateY(-2px);
 }
 
-label{
-margin-top:15px;
-font-weight:bold;
+
+/* ==============================
+   6. MAIN CONTENT
+   ============================== */
+
+main {
+    width: min(1100px, 92%);
+
+    margin: 40px auto;
 }
+
+
+/* ==============================
+   7. SECTIONS
+   ============================== */
+
+section {
+    background-color: var(--surface-color);
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background-color var(--transition);
+}
+
+
+section:hover {
+    transform: translateY(-3px);
+}
+
+
+section h2 {
+    color: var(--primary-color);
+
+    margin-bottom: 15px;
+
+    font-size: 1.7rem;
+}
+
+
+section p {
+    color: var(--muted-text);
+}
+
+
+/* ==============================
+   8. PROFILE IMAGE
+   ============================== */
+
+img {
+    display: block;
+
+    width: 220px;
+    max-width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    margin: 25px auto;
+
+    border-radius: 50%;
+
+    border: 5px solid var(--primary-color);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform var(--transition);
+}
+
+
+img:hover {
+    transform: scale(1.05);
+}
+
+
+/* ==============================
+   9. SKILLS - FLEXBOX
+   ============================== */
+
+section ul {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    list-style: none;
+}
+
+
+section ul li {
+    background-color: var(--primary-color);
+
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 50px;
+
+    font-weight: bold;
+
+    transition:
+        transform var(--transition),
+        background-color var(--transition);
+}
+
+
+section ul li:hover {
+    background-color: var(--primary-dark);
+
+    transform: translateY(-3px);
+}
+
+
+/* ==============================
+   10. PROJECTS - CSS GRID
+   ============================== */
+
+main > section:has(article) {
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+    );
+
+    gap: 20px;
+}
+
+
+/* ==============================
+   11. PROJECT CARDS
+   ============================== */
+
+article {
+    background-color: var(--background-color);
+
+    padding: 25px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+
+article:hover {
+    transform: translateY(-6px);
+
+    box-shadow: var(--shadow);
+
+    border-color: var(--primary-color);
+}
+
+
+article h2,
+article h3 {
+    color: var(--primary-color);
+
+    margin-bottom: 10px;
+}
+
+
+/* ==============================
+   12. EDUCATION ARTICLE
+   ============================== */
+
+article h3 {
+    font-size: 1.3rem;
+}
+
+
+/* ==============================
+   13. CONTACT FORM
+   ============================== */
+
+form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+label {
+    margin-top: 12px;
+
+    font-weight: bold;
+
+    color: var(--text-color);
+}
+
 
 input,
-textarea{
-padding:10px;
-margin-top:5px;
-border:1px solid #ccc;
-border-radius:5px;
+textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 5px;
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 10px;
+
+    background-color: var(--background-color);
+
+    color: var(--text-color);
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
 }
 
-button{
-margin-top:20px;
-padding:12px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
+
+input:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: var(--primary-color);
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-button:hover{
-background:#1d4ed8;
+
+textarea {
+    resize: vertical;
 }
 
-footer{
-background:#2563eb;
-color:white;
-text-align:center;
-padding:15px;
-margin-top:20px;
+
+/* ==============================
+   14. BUTTON
+   ============================== */
+
+button {
+    margin-top: 20px;
+
+    padding: 13px 20px;
+
+    background-color: var(--primary-color);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    transition:
+        background-color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+
+button:hover {
+    background-color: var(--primary-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* ==============================
+   15. FOOTER
+   ============================== */
+
+footer {
+    background-color: var(--primary-color);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 40px;
+}
+
+
+footer p {
+    color: white;
+}
+
+
+/* ==============================
+   16. TABLET
+   ============================== */
+
+@media (min-width: 600px) {
+
+    main {
+        width: min(1100px, 88%);
+    }
+
+    header {
+        padding: 25px;
+    }
+
+    section {
+        padding: 35px;
+    }
+}
+
+
+/* ==============================
+   17. DESKTOP
+   ============================== */
+
+@media (min-width: 900px) {
+
+    header {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        text-align: left;
+
+        padding: 20px 6%;
+    }
+
+    header h1 {
+        margin-bottom: 0;
+    }
+
+    nav ul {
+        margin-top: 0;
+    }
+
+    main {
+        width: min(1100px, 85%);
+    }
+}
+
+
+/* ==============================
+   18. MOBILE
+   ============================== */
+
+@media (max-width: 599px) {
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        gap: 6px;
+
+        flex-direction: column;
+    }
+
+    nav a {
+        display: block;
+    }
+
+    main {
+        margin: 25px auto;
+    }
+
+    section {
+        padding: 22px;
+    }
+
+    section h2 {
+        font-size: 1.4rem;
+    }
+
+    img {
+        width: 180px;
+    }
+}
+
+
+/* ==============================
+   19. REDUCED MOTION
+   ============================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+    }
 }
